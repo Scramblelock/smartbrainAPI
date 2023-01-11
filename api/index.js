@@ -20,7 +20,7 @@ const db = knex({
 
 const app = express();
 
-const whitelist = ['https://smartbrain-ten.vercel.app/'];
+const whitelist = ['https://smartbrain-ten.vercel.app'];
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
