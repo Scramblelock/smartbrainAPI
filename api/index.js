@@ -32,11 +32,21 @@ const corsOptions = {
   },
 };
 app.use(cors(corsOptions));
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Origin, X-Requested-With, Accept, Authorization'
+  );
+  res.header('Access-Control-Expose-Headers', '*');
+  next();
+});
 
 app.use(express.json()); // latest version of exressJS now comes with Body-Parser!
 
 app.get('/', (req, res) => {
-  res.send(db.users);
+  res.sendFile('index.html', { root: path.join(__dirname, 'public') });
 });
 app.post('/signin', signin.handleSignin(db, bcrypt));
 app.post('/register', (req, res) => {
