@@ -20,28 +20,11 @@ const db = knex({
 
 const app = express();
 
-const whitelist = ['https://smartbrain-ten.vercel.app/'];
-const corsOptions = {
-  origin: function (origin, callback) {
-    console.log('origin', origin);
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-};
-app.use(cors(corsOptions));
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Content-Type, Origin, X-Requested-With, Accept, Authorization'
-  );
-  res.header('Access-Control-Expose-Headers', '*');
-  next();
-});
+app.use(
+  cors({
+    origin: '*',
+  })
+);
 
 app.use(express.json()); // latest version of exressJS now comes with Body-Parser!
 
