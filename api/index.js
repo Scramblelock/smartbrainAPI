@@ -42,13 +42,13 @@ app.post('/api/signin', signin.handleSignin(db, bcrypt));
 app.post('/api/register', (req, res) => {
   register.handleRegister(req, res, db, bcrypt);
 });
-app.get('/profile/:id', (req, res) => {
+app.get('/api/profile/:id', (req, res) => {
   profile.handleProfileGet(req, res, db);
 });
-app.put('/image', (req, res) => {
+app.put('/api/image', (req, res) => {
   image.handleImage(req, res, db);
 });
-app.post('/imageurl', (req, res) => {
+app.post('/api/imageurl', (req, res) => {
   image.handleApiCall(req, res);
 });
 
