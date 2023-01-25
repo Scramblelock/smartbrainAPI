@@ -33,7 +33,7 @@ app.use(
   })
 );
 
-app.use(express.json()); // latest version of exressJS now comes with Body-Parser!
+app.use(express.json());
 
 app.get('/', (req, res) => {
   res.sendFile('index.html', { root: path.join(__dirname, 'public') });
